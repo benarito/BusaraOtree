@@ -65,22 +65,9 @@ if 'SENTRY_DSN' in os.environ:
 
 DEMO_PAGE_INTRO_TEXT = """
 <ul>
-    <li>
-        <a href="https://github.com/oTree-org/otree" target="_blank">
-            Source code
-        </a> for the below games.
-    </li>
-    <li>
-        <a href="http://www.otree.org/" target="_blank">
-            oTree homepage
-        </a>.
-    </li>
+    <li><a href=mailto:bensonnjogu@gmail.com>Developer: Benson Njogu  </a></li>
+    <li><a href="https://github.com/benarito/BusaraOtree" target="_blank">Source Code</a></li>
 </ul>
-<p>
-    Below are various games implemented with oTree. These games are all open
-    source, and you can modify them as you wish to create your own variations.
-    Click one to learn more and play.
-</p>
 """
 
 # from here on are qualifications requirements for workers
