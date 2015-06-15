@@ -32,12 +32,12 @@ class Constants:
     players_per_group = None
     num_rounds = 1
 
+
 class Subsession(otree.models.BaseSubsession):
 
     def before_session_starts(self):
         for p in self.get_players():
             p.payoff = 0
-
 
 
 class Group(otree.models.BaseGroup):
@@ -53,6 +53,3 @@ class Player(otree.models.BasePlayer):
     group = models.ForeignKey(Group, null=True)
     subsession = models.ForeignKey(Subsession)
     # </built-in>
-
-
-

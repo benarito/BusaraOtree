@@ -1,0 +1,78 @@
+{% load staticfiles otree_tags %}
+
+<style type="text/css">
+h4.panel-sub-heading {
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: circle;
+    padding-left: 20px;
+}
+</style>
+<div class="well well-lg" style="padding-top:3px; padding-bottom:5px; margin-top:20px;">
+    <h3 class="panel-heading">
+
+            Instructions
+
+    </h3>
+    <div class="panel-body">
+        <p>
+            Three players are randomly selected. Your identity will also remain hidden from your the rest.
+        </p>
+        <p>
+            The three participants will have three different roles: the <strong>proposer</strong>, the <strong>responder</strong> and the <strong>punisher</strong>. You will be assigned randomly to a role, and it will be displayed on the next page.
+        </p>
+        <p>
+            The three of you will together receive {{ Constants.endowment }}. The experiment is about how to divide this amount. The proposer will make the responder a take-it-or-leave-it offer, which the responder can accept or reject.
+            The punisher will have the option to penalize proposer based on his decision. If the offer is rejected, both proposer and responder receive {{ Constants.payoff_if_rejected }},
+            while the Punisher retains {{ Constants.endowment }}.
+        </p>
+        <h4 class="panel-sub-heading">
+
+                Proposer's role
+
+        </h4>
+        <p>
+            The proposer has the following {{ Constants.offer_choices_count }} options on how to divide the {{ Constants.endowment }} between the them(proposer and responder).
+            <ol>
+                {% for give, keep in Constants.keep_give_amounts %}
+                <li>{{ give }} for the responder (the proposer keeps {{ keep }})</li>
+                {% endfor %}
+            </ol>
+        </p>
+        <h4 class="panel-sub-heading">
+
+                Responder's role
+
+        </h4>
+        <p>
+            {% if not group.strategy %} The responder can either accept or reject the offer. {% else %} While the proposer makes the offer, the responder can select which {{ Constants.offer_choices_count }} offers stated above to accept or reject. After the proposer has made the offer, it will be either accepted or rejected according to the responder's choices. {% endif %}
+        </p>
+        <h4 class="panel-sub-heading">
+
+                Punisher's role
+
+        </h4>
+        <p>
+            The punisher does decide to penalize proposer based on his decision.
+        </p>
+        <h4 class="panel-sub-heading">
+
+                Results
+
+        </h4>
+        <p>
+            In the end, when all players have made their decision, a results page will be displayed. Here the offer will be displayed once more, and whether it was accepted or rejected.
+        </p>
+        <p>
+            Furthermore, one of the following two payoffs will be displayed:
+            <ul>
+                <li>If the offer is accepted, the players will receive a payoff accordingly</li>
+                <li>If the offer is rejected, all players will receive {{ Constants.payoff_if_rejected }}</li>
+                <li>If the offer is accpeted, and the Punisher penalizes the Proposer then the amount penalized
+                    is deducted for both the Punisher and the Proposer.{{ Constants.payoff_if_rejected }}</li>
+            </ul>
+        </p>
+    </div>
+</div>

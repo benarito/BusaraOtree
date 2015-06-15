@@ -102,16 +102,16 @@ SESSION_TYPE_DEFAULTS = {
         'frame_height': 500,
         'preview_template': 'global/MTurkPreview.html',
         'minutes_allotted_per_assignment': 60,
-        'expiration_hours': 7*24, # 7 days
+        'expiration_hours': 7 * 24,  # 7 days
     },
 }
 
 SESSION_TYPES = [
     {
-        'name': 'ultimatum',
-        'display_name': "Ultimatum (randomized: strategy vs. direct response)",
-        'num_demo_participants': 2,
-        'app_sequence': ['ultimatum', 'payment_info'],
+        'name': 'mini_ultimatum',
+        'display_name': "Mini-ultimatum game with costly third-party punishment for 3 players.",
+        'num_demo_participants': 3,
+        'app_sequence': ['mini_ultimatum', 'payment_info'],
     },
 
 ]
