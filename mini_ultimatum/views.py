@@ -9,8 +9,7 @@ from .models import Constants
 
 
 class Introduction(Page):
-
-    timeout_seconds = 600
+    pass
 
 
 class Offer(Page):
@@ -20,8 +19,6 @@ class Offer(Page):
 
     def is_displayed(self):
         return self.player.id_in_group == 1
-
-    timeout_seconds = 600
 
 
 class WaitForProposer(WaitPage):
@@ -56,15 +53,11 @@ class Punish(Page):
         if values["amount_punished"] > self.group.amount_punishable:
             return 'The amount punishable should be less or equal to the amount left with the proposer'
 
-    timeout_seconds = 600
-
 
 class PunishPass(Page):
 
     def is_displayed(self):
         return self.player.id_in_group == 3 and not self.group.offer_accepted
-
-    timeout_seconds = 600
 
 
 class ResultsWaitPage(WaitPage):
