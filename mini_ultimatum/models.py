@@ -28,7 +28,7 @@ class Constants:
 
     endowment = c(10)
     payoff_if_rejected = c(0)
-    offer_increment = c(2)
+    offer_increment = c(5)
 
     offer_choices = currency_range(0, endowment, offer_increment)
     offer_choices_count = len(offer_choices)
@@ -68,10 +68,7 @@ class Group(otree.models.BaseGroup):
     )
 
     response_0 = models.BooleanField(widget=widgets.RadioSelectHorizontal())
-    response_2 = models.BooleanField(widget=widgets.RadioSelectHorizontal())
-    response_4 = models.BooleanField(widget=widgets.RadioSelectHorizontal())
-    response_6 = models.BooleanField(widget=widgets.RadioSelectHorizontal())
-    response_8 = models.BooleanField(widget=widgets.RadioSelectHorizontal())
+    response_5 = models.BooleanField(widget=widgets.RadioSelectHorizontal())
     response_10 = models.BooleanField(widget=widgets.RadioSelectHorizontal())
 
     def set_if_accepted(self):
