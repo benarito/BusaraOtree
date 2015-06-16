@@ -14,7 +14,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 if os.environ.get('OTREE_PRODUCTION') in {None, '', '0'}:
     DEBUG = True
 else:
-    DEBUG = False
+    DEBUG = True
 
 if os.environ.get('IS_OTREE_DOT_ORG') in {None, '', '0'}:
     ADMIN_PASSWORD = 'otree'
