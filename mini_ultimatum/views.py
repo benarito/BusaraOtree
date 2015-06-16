@@ -38,7 +38,9 @@ class AcceptStrategy(Page):
 class WaitForResponder(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_if_accepted()
-        self.group.calculate_punishable()
+
+    import time
+    time.sleep(10)
 
 
 class Punish(Page):

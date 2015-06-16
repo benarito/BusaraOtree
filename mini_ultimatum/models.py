@@ -67,6 +67,9 @@ class Group(otree.models.BaseGroup):
         self.offer_accepted = getattr(
             self, 'response_{}'.format(int(self.amount_offered)))
 
+        # calculate the max amount punishable
+        self.calculate_punishable()
+
     def calculate_punishable(self):
         if self.offer_accepted:
             self.amount_punishable = Constants.endowment - self.amount_offered
