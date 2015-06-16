@@ -39,11 +39,8 @@ class WaitForResponder(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_if_accepted()
 
-    import time
-    time.sleep(10)
 
-
-class Punish(Page):
+class Punisher(Page):
 
     form_model = models.Group
     form_fields = ['amount_punished']
@@ -71,6 +68,6 @@ page_sequence = [Introduction,
                  WaitForProposer,
                  AcceptStrategy,
                  WaitForResponder,
-                 Punish,
+                 Punisher,
                  ResultsWaitPage,
                  Results]
