@@ -36,22 +36,14 @@ class Constants:
 
 
 class Subsession(otree.models.BaseSubsession):
-
-    def before_session_starts(self):
-        # randomize to treatments
-        for g in self.get_groups():
-            if 'treatment' in self.session.session_type:
-                g.strategy = self.session.session_type[
-                    'treatment'] == 'strategy'
-            else:
-                g.strategy = True # always true
+    pass
 
 
 class Group(otree.models.BaseGroup):
 
     subsession = models.ForeignKey(Subsession)
 
-    strategy = models.BooleanField(
+    strategy = models.BooleanField(default=True,
         doc="""Whether this group uses strategy method"""
     )
 

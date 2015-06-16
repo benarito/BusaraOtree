@@ -54,12 +54,6 @@ class Punish(Page):
             return 'The amount punishable should be less or equal to the amount left with the proposer'
 
 
-class PunishPass(Page):
-
-    def is_displayed(self):
-        return self.player.id_in_group == 3 and not self.group.offer_accepted
-
-
 class ResultsWaitPage(WaitPage):
 
     def after_all_players_arrive(self):
@@ -76,6 +70,5 @@ page_sequence = [Introduction,
                  AcceptStrategy,
                  WaitForResponder,
                  Punish,
-                 PunishPass,
                  ResultsWaitPage,
                  Results]
