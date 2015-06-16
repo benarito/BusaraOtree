@@ -57,6 +57,7 @@ class Group(otree.models.BaseGroup):
 
     amount_offered = models.CurrencyField(choices=Constants.offer_choices)
     amount_punished = models.CurrencyField(choices=Constants.offer_choices)
+    amount_punishable = models.CurrencyField()
 
     offer_accepted = models.BooleanField(
         doc="if offered amount is accepted (direct response method)"
@@ -73,15 +74,19 @@ class Group(otree.models.BaseGroup):
     response_8 = models.BooleanField(widget=widgets.RadioSelectHorizontal())
     response_10 = models.BooleanField(widget=widgets.RadioSelectHorizontal())
 
+    def set_if_accepted(self):
+        self.offer_accepted = getattr(
+            self, 'response_{}'.format(int(self.amount_offered)))
+
+    def calculate_punishable(self):
+        if self.offer_accepted:
+            self.amount_punishable = Constants.endowment - self.amount_offered
+
     def set_payoffs(self):
         p1, p2, p3 = self.get_players()
 
         if self.amount_punished:
             self.proposer_punished = True
-
-        if self.strategy:
-            self.offer_accepted = getattr(
-                self, 'response_{}'.format(int(self.amount_offered)))
 
         if self.offer_accepted:
             if self.proposer_punished:

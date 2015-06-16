@@ -37,8 +37,12 @@ class AcceptStrategy(Page):
     def is_displayed(self):
         return self.player.id_in_group == 2 and self.group.strategy
 
+
 class WaitForResponder(WaitPage):
-    pass
+    def after_all_players_arrive(self):
+        self.group.set_if_accepted()
+        self.group.calculate_punishable()
+
 
 class Punish(Page):
 
@@ -48,7 +52,12 @@ class Punish(Page):
     def is_displayed(self):
         return self.player.id_in_group == 3 and self.group.offer_accepted
 
+    def error_message(self, values):
+        if values["amount_punished"] > self.group.amount_punishable:
+            return 'The amount punishable should be less or equal to the amount left with the proposer'
+
     timeout_seconds = 600
+
 
 class PunishPass(Page):
 
